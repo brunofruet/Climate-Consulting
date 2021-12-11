@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Consulting</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <span>Climate Consulting</span><i class="fas fa-anchor"></i>
+        </a>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="addCity.html">Agregar Ciudad</a></li>
+            <li class="nav-item"><a href="index.html">Consultar Clima</a></li>
+        </ul>
+    </nav>
+    <main class="clim-consult">
+        <form action="" id="form-consult" onsubmit="return false">
+            <div class="selectBox">
+                <fieldset>
+                    <legend>Seleccione una ciudad</legend>
+                    <select name="selectable" id="citySelected" required>
+                        <option value="0" id="select" selected>Seleccionar...</option>
+                        <option value="1" id="dC">Rosario</option>
+                        <option value="2" id="dS">Buenos Aires</option>
+                        <option value="3" id="dO">Montevideo</option>
+                    </select>
+                </fieldset>
+            </div>
+            <div>
+                <button type="submit" id="btn-consult-city" onclick="consultCity()">Consultar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
