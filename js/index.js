@@ -1,23 +1,45 @@
-// let citySaved = localStorage.getItem('cities');
+let sizeLocalStorage = Object.keys(localStorage).length; 
+let citiesInLocalStorage = {};
+function updateStorage(){
+    for (let i = 1; i < sizeLocalStorage; i++){
+        citiesInLocalStorage[i] = localStorage.getItem(i)
+    }
+}
+updateStorage();
 let inputCity = document.getElementById("cityAdd");
+let selectOption = document.getElementById("citySelected");
 var citiesSaved = {
     1: "rosario",
-    2: "buenos aires",
+    2: "cordoba",
     3: "corrientes"
 };
+initDataCities();
+let size = Object.keys(citiesSaved).length;
 function initDataCities(){
-    for (var [key, value] of Object.entries(citiesSaved)){
-        localStorage.setItem(key, value)
+    if (localStorage.length != 0){
+        for (var [key, value] of Object.entries(citiesInLocalStorage)){
+            var option = document.createElement('option');
+            option.value = key;
+            option.innerHTML = value;
+            selectOption.appendChild(option);    
+        }
+    }else{ 
+        for (var [key, value] of Object.entries(citiesSaved)){
+            localStorage.setItem(key, value)
+            var option = document.createElement('option');
+            option.value = key;
+            option.innerHTML = value;
+            selectOption.appendChild(option);
+        }
     }
 }
 initDataCities();
-let size = Object.keys(citiesSaved).length;
 
 function validateCity(){
 let validate = true;
     for (var [key, value] of Object.entries(citiesSaved)){
         if (value.toString() == inputCity.value.toLowerCase()){
-            console.log("ya existe");
+            alert("La ciudad ingresada ya existe");
             validate = false;
         }
     }
@@ -31,4 +53,8 @@ function addCity(newCity){
     let newCityKey = size + 1; 
     citiesSaved[newCityKey] = newCity;
     localStorage.setItem(newCityKey, newCity)
+    var option = document.createElement('option');
+    option.value = newCityKey;
+    option.innerHTML = newCity;
+    selectOption.appendChild(option);
 }

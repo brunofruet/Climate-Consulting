@@ -11,23 +11,21 @@
 <body>
     <nav class="navbar">
         <a href="#" class="logo">
-            <span>Climate Consulting</span><i class="fas fa-anchor"></i>
+            <span>Climate Consulting</span><i class="fas fa-anchor"></i> 
         </a>
         <ul class="nav-links">
             <li class="nav-item"><a href="addCity.html">Agregar Ciudad</a></li>
             <li class="nav-item"><a href="index.html">Consultar Clima</a></li>
         </ul>
     </nav>
-    <main class="clim-consult">
+    <main class="clim-add">
+        <h1>Consultar Clima</h1>
         <form action="" id="form-consult" onsubmit="return false">
             <div class="selectBox">
                 <fieldset>
                     <legend>Seleccione una ciudad</legend>
                     <select name="selectable" id="citySelected" required>
                         <option value="0" id="select" selected>Seleccionar...</option>
-                        <option value="1" id="C1">Rosario</option>
-                        <option value="2" id="C2">Buenos Aires</option>
-                        <option value="3" id="C3">Corrientes</option>
                     </select>
                 </fieldset>
             </div>
@@ -35,6 +33,19 @@
                 <button type="submit" id="btn-consult-city" onclick="consultCity()">Consultar</button>
             </div>
         </form>
+        <br>
+        <h1>Agregar Ciudad</h1>
+        <form action="" id="form-add" onsubmit="return false">
+            <div class="addCityBox">
+            <fieldset>
+                <legend>Ingrese Ciudad</legend>
+                <input type="text" id="cityAdd">
+            </fieldset>
+            <div>
+                <button type="submit" id="btn-add-city" onclick="validateCity()">Agregar</button>
+            </div>
+        </form>
     </main>
+
 </body>
 </html>
