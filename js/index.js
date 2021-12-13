@@ -1,8 +1,9 @@
-let sizeLocalStorage = Object.keys(localStorage).length; 
 let citiesInLocalStorage = {};
 function updateStorage(){
-    for (let i = 1; i < sizeLocalStorage; i++){
-        citiesInLocalStorage[i] = localStorage.getItem(i)
+let sizeLocalStorage = Object.keys(localStorage).length;
+citiesInLocalStorage = {};
+    for (let i = 1; i < (sizeLocalStorage + 1); i++){
+        citiesInLocalStorage[i] = localStorage.getItem(i);
     }
 }
 updateStorage();
@@ -16,16 +17,9 @@ var citiesSaved = {
 initDataCities();
 let size = Object.keys(citiesSaved).length;
 function initDataCities(){
-    if (localStorage.length != 0){
-        for (var [key, value] of Object.entries(citiesInLocalStorage)){
-            var option = document.createElement('option');
-            option.value = key;
-            option.innerHTML = value;
-            selectOption.appendChild(option);    
-        }
-    }else{ 
+    if (localStorage.length == 0){
         for (var [key, value] of Object.entries(citiesSaved)){
-            localStorage.setItem(key, value)
+            localStorage.setItem(key, value);
             var option = document.createElement('option');
             option.value = key;
             option.innerHTML = value;
@@ -33,7 +27,6 @@ function initDataCities(){
         }
     }
 }
-initDataCities();
 
 function validateCity(){
 let validate = true;
@@ -46,15 +39,30 @@ let validate = true;
     if (validate){
         addCity(inputCity.value.toLowerCase());
         size = Object.keys(citiesSaved).length;
+	updateStorage();
     }
 }
 
 function addCity(newCity){
-    let newCityKey = size + 1; 
+    let sizeLocalStorage = Object.keys(localStorage).length;
+    let newCityKey = sizeLocalStorage + 1;
     citiesSaved[newCityKey] = newCity;
-    localStorage.setItem(newCityKey, newCity)
+    localStorage.setItem(newCityKey, newCity);
     var option = document.createElement('option');
     option.value = newCityKey;
     option.innerHTML = newCity;
     selectOption.appendChild(option);
+}
+
+
+updateDataCities();
+function updateDataCities(){
+    if (localStorage.length != 0){
+        for (var [key, value] of Object.entries(citiesInLocalStorage)){
+            		var option = document.createElement('option');
+            		option.value = key;
+            		option.innerHTML = value;
+            		selectOption.appendChild(option); 
+        }
+    }
 }
