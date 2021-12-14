@@ -1,7 +1,8 @@
+// Obtener los datos del localStorage
 let citiesInLocalStorage = {};
 function updateStorage(){
-let sizeLocalStorage = Object.keys(localStorage).length;
-citiesInLocalStorage = {};
+    let sizeLocalStorage = Object.keys(localStorage).length;
+    citiesInLocalStorage = {};
     for (let i = 1; i < (sizeLocalStorage + 1); i++){
         citiesInLocalStorage[i] = localStorage.getItem(i);
     }
@@ -14,7 +15,9 @@ var citiesSaved = {
     2: "cordoba",
     3: "corrientes"
 };
+
 initDataCities();
+// Inicializa los datos de ciudades guardadas en el input option
 let size = Object.keys(citiesSaved).length;
 function initDataCities(){
     if (localStorage.length == 0){
@@ -27,9 +30,9 @@ function initDataCities(){
         }
     }
 }
-
+// Validacion no repetir ciudades
 function validateCity(){
-let validate = true;
+    let validate = true;
     for (var [key, value] of Object.entries(citiesSaved)){
         if (value.toString() == inputCity.value.toLowerCase()){
             alert("La ciudad ingresada ya existe");
@@ -39,10 +42,10 @@ let validate = true;
     if (validate){
         addCity(inputCity.value.toLowerCase());
         size = Object.keys(citiesSaved).length;
-	updateStorage();
+        updateStorage();
     }
 }
-
+// Agrega la ciudad
 function addCity(newCity){
     let sizeLocalStorage = Object.keys(localStorage).length;
     let newCityKey = sizeLocalStorage + 1;
@@ -56,13 +59,40 @@ function addCity(newCity){
 
 
 updateDataCities();
+// Actualiza los datos de las ciudades agregadas en el input option
 function updateDataCities(){
     if (localStorage.length != 0){
         for (var [key, value] of Object.entries(citiesInLocalStorage)){
-            		var option = document.createElement('option');
-            		option.value = key;
-            		option.innerHTML = value;
-            		selectOption.appendChild(option); 
+            var option = document.createElement('option');
+            option.value = key;
+            option.innerHTML = value;
+            selectOption.appendChild(option); 
         }
     }
+}
+
+let btnConsultClimate = document.getElementById("btn-consult-city");
+let loadingElement = document.getElementById('loading');
+let climateContainerElement = document.getElementById('climate-container');
+loadingElement.style.display = "none";
+function consultCity() {
+    let selectedCityKey = Number(document.querySelector(".citySelected").value);
+    let selectedCity = localStorage.getItem(selectedCityKey);
+    loadingElement.style.display = "block";
+    fetch( `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es`)
+    .then((response) => response.json())
+        .then((posts) => {
+             //Vaciar contenedor
+            climateContainerElement.innerHTML = `
+                <article>
+                    <h3>${posts.name}</h3>
+                    <p>La temperatura es: ${posts.main.temp}ºC y ${posts.weather[0].description}</p>
+                </article>`;
+            climateContainerElement.style.display = "block";
+            loadingElement.style.display = "none";
+        }).catch((error) => {
+            console.error(error);
+        }).finally(() => {
+            loadingElement.style.display = "none";
+        });
 }

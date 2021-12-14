@@ -14,7 +14,7 @@
             <span>Climate Consulting</span><i class="fas fa-anchor"></i> 
         </a>
         <ul class="nav-links">
-            <li class="nav-item"><a href="addCity.html">Agregar Ciudad</a></li>
+            <li class="nav-item"><a href="index.html">Agregar Ciudad</a></li>
             <li class="nav-item"><a href="index.html">Consultar Clima</a></li>
         </ul>
     </nav>
@@ -24,7 +24,7 @@
             <div class="selectBox">
                 <fieldset>
                     <legend>Seleccione una ciudad</legend>
-                    <select name="selectable" id="citySelected" required>
+                    <select name="selectable" id="citySelected" class="citySelected" required>
                         <option value="0" id="select" selected>Seleccionar...</option>
                     </select>
                 </fieldset>
@@ -32,7 +32,13 @@
             <div>
                 <button type="submit" id="btn-consult-city" onclick="consultCity()">Consultar</button>
             </div>
+            <p class="loading" id="loading">
+                Cargando...
+            </p>
         </form>
+        <div id="climate-container">
+
+        </div>
         <br>
         <h1>Agregar Ciudad</h1>
         <form action="" id="form-add" onsubmit="return false">
