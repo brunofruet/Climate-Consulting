@@ -14,12 +14,11 @@
             <span>Climate Consulting</span><i class="fas fa-anchor"></i> 
         </a>
         <ul class="nav-links">
-            <li class="nav-item"><a href="index.html">Agregar Ciudad</a></li>
             <li class="nav-item"><a href="index.html">Consultar Clima</a></li>
         </ul>
     </nav>
     <main class="clim-add">
-        <h1>Consultar Clima</h1>
+        <h2>Consultar Clima</h2>
         <form action="" id="form-consult" onsubmit="return false">
             <div class="selectBox">
                 <fieldset>
@@ -31,6 +30,7 @@
             </div>
             <div>
                 <button type="submit" id="btn-consult-city" onclick="consultCity()">Consultar</button>
+                <button type="submit" onclick="showItem()">Agregar ciudad</button>
             </div>
             <p class="loading" id="loading">
                 Cargando...
@@ -40,7 +40,7 @@
 
         </div>
         <br>
-        <h1>Agregar Ciudad</h1>
+        <div id="ciudad">
         <form action="" id="form-add" onsubmit="return false">
             <div class="addCityBox">
             <fieldset>
@@ -51,6 +51,7 @@
                 <button type="submit" id="btn-add-city" onclick="validateCity()">Agregar</button>
             </div>
         </form>
+    </div>
     </main>
 
 </body>

@@ -90,9 +90,15 @@ function consultCity() {
                 </article>`;
             climateContainerElement.style.display = "block";
             loadingElement.style.display = "none";
+            console.log(posts);
         }).catch((error) => {
             console.error(error);
         }).finally(() => {
             loadingElement.style.display = "none";
         });
+}
+var btnCiudad = document.getElementById('ciudad');
+btnCiudad.style.display = "none";
+function showItem() {
+    btnCiudad.style.display = "block";
 }
