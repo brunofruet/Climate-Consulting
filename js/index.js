@@ -7,9 +7,11 @@ function updateStorage(){
         citiesInLocalStorage[i] = localStorage.getItem(i);
     }
 }
+
 updateStorage();
 let inputCity = document.getElementById("cityAdd");
 let selectOption = document.getElementById("citySelected");
+
 var citiesSaved = {
     1: "rosario",
     2: "cordoba",
@@ -17,8 +19,10 @@ var citiesSaved = {
 };
 
 initDataCities();
+
 // Inicializa los datos de ciudades guardadas en el input option
 let size = Object.keys(citiesSaved).length;
+
 function initDataCities(){
     if (localStorage.length == 0){
         for (var [key, value] of Object.entries(citiesSaved)){
@@ -30,21 +34,25 @@ function initDataCities(){
         }
     }
 }
+
 // Validacion no repetir ciudades
 function validateCity(){
     let validate = true;
+
     for (var [key, value] of Object.entries(citiesSaved)){
         if (value.toString() == inputCity.value.toLowerCase()){
             alert("La ciudad ingresada ya existe");
             validate = false;
         }
     }
+
     if (validate){
         addCity(inputCity.value.toLowerCase());
         size = Object.keys(citiesSaved).length;
         updateStorage();
     }
 }
+
 // Agrega la ciudad
 function addCity(newCity){
     let sizeLocalStorage = Object.keys(localStorage).length;
@@ -57,8 +65,8 @@ function addCity(newCity){
     selectOption.appendChild(option);
 }
 
-
 updateDataCities();
+
 // Actualiza los datos de las ciudades agregadas en el input option
 function updateDataCities(){
     if (localStorage.length != 0){
@@ -81,24 +89,40 @@ function consultCity() {
     loadingElement.style.display = "block";
     fetch( `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es`)
     .then((response) => response.json())
-        .then((posts) => {
-             //Vaciar contenedor
+        .then((object) => {
+             
             climateContainerElement.innerHTML = `
                 <article>
-                    <h3>${posts.name}</h3>
-                    <p>La temperatura es: ${posts.main.temp}ºC y ${posts.weather[0].description}</p>
+                    <h3>${object.name}</h3>
+                    <p>La temperatura es: ${object.main.temp}ºC y ${object.weather[0].description}</p>
                 </article>`;
             climateContainerElement.style.display = "block";
             loadingElement.style.display = "none";
-            console.log(posts);
+            console.log(object);
+
+            
         }).catch((error) => {
             console.error(error);
         }).finally(() => {
             loadingElement.style.display = "none";
         });
+
+    
 }
+
 var btnCiudad = document.getElementById('ciudad');
 btnCiudad.style.display = "none";
-function showItem() {
+
+function showAdd() {
     btnCiudad.style.display = "block";
+    btnConsulta.style.display = "none";
+
+}
+
+var btnConsulta = document.getElementById('consulta');
+btnConsulta.style.display = "none";
+
+function showConsult() {
+    btnConsulta.style.display = "block";
+    btnCiudad.style.display = "none";
 }

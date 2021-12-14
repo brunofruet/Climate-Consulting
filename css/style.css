@@ -1,8 +1,119 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&family=Maven+Pro&family=Merriweather+Sans:ital,wght@0,300;1,300;1,500&family=Poppins:ital,wght@1,100&family=Roboto:wght@100&family=Slabo+27px&family=Ubuntu:wght@300&display=swap");
 
 * {
-
-    font-family: "Poppins", sans-serif;
-    margin: 0%;
+    font-family: 'Ubuntu', sans-serif;
+    
 }
+
+body {
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background-image: url("https://diarioletrab.com.ar/wp-content/uploads/2021/03/Clima-.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    display: block;
+    text-align: center;
+    color: black;
+    padding: 20px;
+    font-size: 40px;
+    text-shadow: 2px 2px 5px rgb(75, 70, 70);
+    font-weight: 600;
+}
+
+.logo i {
+    margin-left: 3%;
+    font-size: 50px;
+    color: #201f30;
+}
+
+.nav-links {
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-item {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 25%;
+}
+
+.nav-item a {
+    color: #1b2c42;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    text-align: center; /*centra el texto en el contenido*/
+    padding: 10px 0; /*genera espacios de 10px arriba y abajo del texto y de 0 a la derecha e izquierda*/
+    
+}
+  
+.nav-item a:hover {
+    background: #379eda; /*aplica la sombra cuando pasas el mouse por el menu*/
+    cursor: pointer;
+}
+
+fieldset,
+select,
+button {
+    border-radius: 5px;
+    margin: 1% 15%;
+    border: 1px solid;
+    font-size: 25px;
+    
+  
+}
+
+select,
+button,
+input {
+    
+    background: #6dbfdd8e;
+  
+}
+
+input {
+    border-radius: 5px;
+    margin: 1% 15%;
+    border: 1px solid;
+    font-size: 25px;
+    
+}
+
+.container-consult,
+.container-add  {
+    
+    background-color: #6dbfdd8e;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 5px 5px 10px 1px #000;
+    text-align: center;
+    margin: 20px;
+    
+}
+#btn-add-city {
+    background-color: #d7edf1;
+}
+#btn-add-city:hover {
+    cursor: pointer;
+}
+#btn-consult-city {
+    background-color: #d7edf1;
+}
+#btn-consult-city:hover {
+    cursor: pointer;
+}
+
+#climate-container h3, p {
+    font-size: 30px;
+}
+
 

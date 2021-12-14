@@ -1,58 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Climate Consulting</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" media="(max-width: 480px)" href="css/mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <script src="js/index.js" defer></script>
 </head>
+
 <body>
     <nav class="navbar">
         <a href="#" class="logo">
-            <span>Climate Consulting</span><i class="fas fa-anchor"></i> 
+            <span>Climate Consulting</span><i class="fas fa-cloud-sun"></i>
         </a>
         <ul class="nav-links">
-            <li class="nav-item"><a href="index.html">Consultar Clima</a></li>
+            <li class="nav-item"><a  onclick="showConsult()">Consultar Clima</a></li>
+            <li class="nav-item"><a  onclick="showAdd()">Agregar Ciudad</a></li>
         </ul>
     </nav>
     <main class="clim-add">
-        <h2>Consultar Clima</h2>
-        <form action="" id="form-consult" onsubmit="return false">
-            <div class="selectBox">
-                <fieldset>
-                    <legend>Seleccione una ciudad</legend>
-                    <select name="selectable" id="citySelected" class="citySelected" required>
-                        <option value="0" id="select" selected>Seleccionar...</option>
-                    </select>
-                </fieldset>
-            </div>
-            <div>
-                <button type="submit" id="btn-consult-city" onclick="consultCity()">Consultar</button>
-                <button type="submit" onclick="showItem()">Agregar ciudad</button>
-            </div>
-            <p class="loading" id="loading">
-                Cargando...
-            </p>
-        </form>
-        <div id="climate-container">
+        <div class="container-consult" id="consulta">
 
+            <h2>Consultar Clima</h2>
+            <form action="" id="form-consult" onsubmit="return false">
+                <div class="selectBox">
+                    <fieldset>
+                        <legend>Seleccione una ciudad</legend>
+                        <select name="selectable" id="citySelected" class="citySelected" required>
+                            <option value="0" id="select" selected>Seleccionar...</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div>
+                    <button type="submit" id="btn-consult-city" onclick="consultCity()">Consultar</button>
+                    
+                    
+                </div>
+                <p class="loading" id="loading">
+                    Cargando...
+                </p>
+            </form>
+            <div id="climate-container">
+
+            </div>
         </div>
         <br>
-        <div id="ciudad">
-        <form action="" id="form-add" onsubmit="return false">
-            <div class="addCityBox">
-            <fieldset>
-                <legend>Ingrese Ciudad</legend>
-                <input type="text" id="cityAdd">
-            </fieldset>
-            <div>
-                <button type="submit" id="btn-add-city" onclick="validateCity()">Agregar</button>
-            </div>
-        </form>
-    </div>
+        <div class="container-add" id="ciudad">
+                    
+                <form action="" id="form-add" onsubmit="return false">
+                    <div class="addCityBox">
+                        <fieldset>
+                            <legend>Ingrese Ciudad</legend>
+                            <input type="text" id="cityAdd">
+                        </fieldset>
+                        <div>
+                            <button type="submit" id="btn-add-city" onclick="validateCity()">Agregar</button>
+                        </div>
+                </form>
+            
+        </div>
     </main>
 
 </body>
+
 </html>
