@@ -18,7 +18,8 @@
 fieldset,
 select,
 button,
-input {
+input,
+#loading {
     font-size: 15px;
     margin: 15px;
 }

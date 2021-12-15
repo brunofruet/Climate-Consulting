@@ -7,11 +7,12 @@
 
 body {
     height: 100vh;
-    margin: 0px;
     padding: 0px;
     background-image: url("https://diarioletrab.com.ar/wp-content/uploads/2021/03/Clima-.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .logo {
@@ -31,10 +32,10 @@ body {
 }
 
 .nav-links {
-    margin: 0;
     padding: 10px;
     list-style-type: none;
     display: flex;
+    justify-content: center;
 }
 
 .nav-item {
@@ -73,10 +74,8 @@ button {
 
 select,
 button,
-input {
-    
-    background: #6dbfdd8e;
-  
+input {   
+    background-color: #d7edf1;
 }
 
 input {
@@ -90,7 +89,7 @@ input {
 .container-consult,
 .container-add  {
     
-    background-color: #6dbfdd8e;
+    background-color: #58b6d88e;
     align-items: center;
     border-radius: 20px;
     padding: 20px;
@@ -116,4 +115,10 @@ input {
     font-size: 30px;
 }
 
-
+.citySelected {
+    text-transform: capitalize;
+}
+.selectBox{
+    margin-left: 5%;
+    margin-right: 5%;
+}
