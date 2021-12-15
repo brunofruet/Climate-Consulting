@@ -49,7 +49,6 @@ function validateCity(){
     if (validate){
         addCity(inputCity.value.toLowerCase());
         size = Object.keys(citiesSaved).length;
-        updateStorage();
     }
 }
 
@@ -63,6 +62,7 @@ function addCity(newCity){
     option.value = newCityKey;
     option.innerHTML = newCity;
     selectOption.appendChild(option);
+    document.getElementById('form-add').reset(); //limpia el formulario
 }
 
 updateDataCities();
@@ -126,3 +126,4 @@ function showConsult() {
     btnConsulta.style.display = "block";
     btnCiudad.style.display = "none";
 }
+
